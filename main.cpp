@@ -21,6 +21,24 @@ void preorderrecursive(node* root){
     preorderrecursive(root->right);
 }
 
+void inorderrecursive(node* root){
+    if(root == nullptr){
+        return;
+    }
+    inorderrecursive(root->left);
+    cout<<root->data;
+    inorderrecursive(root->right);
+}
+
+void postorderrecursive(node* root){
+    if(root == nullptr){
+        return;
+    }
+    postorderrecursive(root->left);
+    postorderrecursive(root->right);
+    cout<<root->data;
+}
+
 int main() {
     node* root = new node(1);
     root->left = new node(2);
