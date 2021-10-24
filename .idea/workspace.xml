@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="Trees_Algorithms" targetName="Trees_Algorithms" />
@@ -11,7 +14,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="545cb050-9171-404e-8a96-48fd922b4fc1" name="Changes" comment="" />
+    <list default="true" id="545cb050-9171-404e-8a96-48fd922b4fc1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +44,11 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
     <configuration name="Trees_Algorithms" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Trees_Algorithms" TARGET_NAME="Trees_Algorithms" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Trees_Algorithms" RUN_TARGET_NAME="Trees_Algorithms">
@@ -116,11 +125,16 @@
       <option name="presentableId" value="Default" />
       <updated>1635082604612</updated>
       <workItem from="1635082607886" duration="37000" />
-      <workItem from="1635082662915" duration="1000" />
+      <workItem from="1635082662915" duration="2104000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
   </component>
 </project>
