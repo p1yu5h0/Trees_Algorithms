@@ -111,7 +111,76 @@ vector<int> preorderiterative(node* root){
     return ans;
 }
 
+vector<int> inorderiterative(node* root){
+    /*
+     * Algorithm:-
+     * Inorder is LEFT ROOT RIGHT
+     * In case of recursion we had first go to all the left (remember), then return and then take the root node and then try right for that node
+     * In recursion we just used the auxiliary stack inside the memory but in this iterative case, we will use our own stack
+     * Initially we have a root node and an empty stack
+     * We put that node inside the stack
+     * Now remove it and check if it has any left child or not
+     * Now till we reach the nullptr, we push all the left child inside the stack
+     * After reaching the null ptr we just take out that element from stack and print it
+     * Now we move to the right child and if it's a null, then we come back and push out the top element of stack and print it
+     * Then we move to the grandparent of nullptr right and go to the right
+     * We do these steps until the whole tree is covered and stack become empty
+     * */
+    vector<int>inorder;
+    if(root==nullptr){
+        return inorder;
+    }
+    stack<node*>st;
+    while(root or !st.empty())
+    {
+        if(root)
+        {
+            st.push(root);
+            root=root->left;
+        }
+        else
+        {
+            root=st.top();
+            st.pop();
+            inorder.push_back(root->data);
+            root=root->right;
+        }
+    }
+    return inorder;
+}
 
+vector<int> postorderiterative2stacks(node* root){
+    /*
+     * Algorithm:-
+     * Steps :
+       1. Initial config : Take the root and put it in the 1st stack.
+       2. Now, take the top from the 1st stack and put it into the 2nd stack
+       3. After that, if the top in 2nd stack has left → add it in 1st stack.  And if the top in 2nd stack has right → add it in the 1st stack.
+       4. Now again, take the top from the 1st stack and put it into the 2nd stack. Repeat step 2 & 3 until 1st stack is empty.
+       5. Pop the element from the 2nd stack and print.
+     * */
+    vector<int> postorder;
+    stack<node*> s1, s2;
+    if(root == nullptr){
+        return postorder;
+    }
+    s1.push(root);
+    while(!s1.empty()){
+        auto temp = s1.top();
+        s1.pop();
+        s2.push(temp);
+        if(temp->left!= nullptr){
+            s1.push(temp->left);
+        }
+        if(temp->right!= nullptr){
+            s1.push(temp->right);
+        }
+    }
+    while(!s2.empty()){
+        postorder.push_back(s2.top()->data);
+        s2.pop();
+    }
+}
 
 int main() {
     node* root = new node(1);
