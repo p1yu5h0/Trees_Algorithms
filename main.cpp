@@ -180,6 +180,7 @@ vector<int> postorderiterative2stacks(node* root){
         postorder.push_back(s2.top()->data);
         s2.pop();
     }
+    return postorder;
 }
 
 int main() {
