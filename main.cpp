@@ -183,6 +183,71 @@ vector<int> postorderiterative2stacks(node* root){
     return postorder;
 }
 
+//vector<int> postorderiterative1stacks(node* root){
+//    do this later
+//}
+
+int maxDepthdfs(node* root) {
+    /*
+     * Algorithm:-
+     * Simple recursive solution can be used to find the depth of a binary tree
+     * Here the base case is when we reach the nullptr and return zero
+     * Else for every current root, we find the maximum of the sum of right root or the left root and add 1 to it everytime
+     * */
+    if(root==nullptr){
+        return 0;
+    }
+    return max(maxDepthdfs(root->left),maxDepthdfs(root->right))+1;
+}
+
+int maxDepthbfs(node* root) {
+    if(root == nullptr){
+        return 0;
+    }
+    queue<node*> q;
+    q.push(root);
+    int count = 0;
+    while(!q.empty()){
+        auto size = q.size();
+        count++;
+        while(size--){
+            auto temp = q.front();
+            q.pop();
+            if(temp->left!=nullptr){
+                q.push(temp->left);
+            }
+            if(temp->right!=nullptr){
+                q.push(temp->right);
+            }
+        }
+    }
+    return count;
+}
+
+int dfsisBalanced(node* root, bool& isBalanced) {
+    if(!root || !isBalanced) //if unbalanced, return for saving time, no need to check the rest of nodes
+        return 0;
+    int l = dfsisBalanced(root->left, isBalanced), r = dfsisBalanced(root->right, isBalanced);
+    if(abs(l-r) > 1)
+        isBalanced = false;
+    return max(l, r) + 1;
+}
+
+bool isBalanced(node* root) {
+    /*
+     * Algorithm:-
+     * Here if we go and check all the nodes one by one recursively, the time complexity becomes O(n^2)
+     * But if we use some height of binary tree algorithm we can find that it's a balanced tree or not
+     * ie. at anypoint of recursion if(abs(lh - rh) > 1) then we return -1 which means false
+     * else if the recursion completes we return true;
+     * */
+    bool isBalanced = true;
+    dfsisBalanced(root, isBalanced);
+    return isBalanced;
+}
+
+
+
 int main() {
     node* root = new node(1);
     root->left = new node(2);
