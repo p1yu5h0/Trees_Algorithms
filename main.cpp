@@ -77,6 +77,42 @@ vector<vector<int>> levelOrder(node* root) {
     return ans;
 }
 
+vector<int> preorderiterative(node* root){
+    /*
+     * Algorithm:-
+     * This is an iterative way to approach this problem
+     * We use a stack instead of recursion
+     * First push the root node inside the stack
+     * Now till the stack becomes empty we keep on iterating
+     * Since it's a preorder traversal it's (root, left, right)
+     * Which means the root is printed first then the left subtree then the right subtree
+     * First pushback the root node (or the current node) inside the ans array and then,
+     * But since the stack is LIFO type hence we need to push the right subtree (or node) first and then push the left subtree (or node)
+     * Hence on stack iteration from top to bottom we got our left subtree printed first and the right subtree printed second
+     * With this algo in the end we get the correct preorder traversal
+     * */
+    vector<int> ans;
+    if(root == nullptr){
+        return ans;
+    }
+    stack<node*> s;
+    s.push(root);
+    while(!s.empty()){
+        node* temp = s.top();
+        s.pop();
+        ans.push_back(temp->data);
+        if(temp->right!= nullptr){
+            s.push(temp->right);
+        }
+        if(temp->left!= nullptr){
+            s.push(temp->left);
+        }
+    }
+    return ans;
+}
+
+
+
 int main() {
     node* root = new node(1);
     root->left = new node(2);
