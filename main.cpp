@@ -187,7 +187,7 @@ vector<int> postorderiterative2stacks(node* root){
 //    do this later
 //}
 
-int maxDepthdfs(node* root) {
+int maxHeightdfs(node* root) {
     /*
      * Algorithm:-
      * Simple recursive solution can be used to find the depth of a binary tree
@@ -197,10 +197,10 @@ int maxDepthdfs(node* root) {
     if(root==nullptr){
         return 0;
     }
-    return max(maxDepthdfs(root->left),maxDepthdfs(root->right))+1;
+    return max(maxHeightdfs(root->left),maxHeightdfs(root->right))+1;
 }
 
-int maxDepthbfs(node* root) {
+int maxHeightbfs(node* root) {
     if(root == nullptr){
         return 0;
     }
@@ -246,6 +246,52 @@ bool isBalanced(node* root) {
     return isBalanced;
 }
 
+int height(node* root)
+{
+    if(!root)return 0;
+    return max(height(root->left),height(root->right))+1;
+}
+
+int diameterOfBTnaive(node* root){
+    /*
+     * Algorithm:-
+     * The naive way to solve this problem is to go to each node and calculate the left path height + right path height
+     * And in the end return the largest height you can get after comparing each and every node
+     * */
+    if(!root)return 0;
+
+    int root_height=height(root->left)+height(root->right);
+
+    int left_root_height=diameterOfBTnaive(root->left);
+
+    int right_root_height= diameterOfBTnaive(root->right);
+
+    return max(root_height,max(left_root_height,right_root_height));
+}
+
+int depth(node *root, int& max_dm){
+    if(root)
+    {
+        int lt=depth(root->left, max_dm);
+        int rt=depth(root->right, max_dm);
+
+        max_dm=max(max_dm,lt+rt);
+
+        return 1+max(lt,rt);
+    }
+    return 0;
+}
+
+int diameterOfBinaryTreeOptimal(node* root) {
+    /*
+     * Algorithm:-
+     * At every step when we are calculating depth at the same time we keep tack of max of lt+rt i.e (diameter)
+     * */
+    int max_dm = 0;
+    depth(root, max_dm);
+    return max_dm;
+}
+
 
 
 int main() {
@@ -253,6 +299,7 @@ int main() {
     root->left = new node(2);
     root->right = new node(3);
     root->left->right = new node(5);
+
 
     return 0;
 }
