@@ -292,7 +292,18 @@ int diameterOfBinaryTreeOptimal(node* root) {
     return max_dm;
 }
 
-
+bool isSameTree(node* p, node* q) {
+    /*
+     * Algorithm:-
+     * If the trees are same then their traversals must also be same
+     * Lets check here with the help of preorder traversal
+     * Traversal visits each of the similar nodes in the two binary trees simultaneously and check if the value is same or not
+     * */
+    if(p==nullptr or q==nullptr){
+        return (p==q);
+    }
+    return (p->data == q->data) && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+}
 
 int main() {
     node* root = new node(1);
